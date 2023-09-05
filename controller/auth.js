@@ -2,6 +2,7 @@
 
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const User = require('..models/');
 
 app.post("/auth", async (req, res) => {
   const { email, password } = req.body;
