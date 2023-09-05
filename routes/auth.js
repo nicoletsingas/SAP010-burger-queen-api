@@ -1,3 +1,5 @@
+// metodos que vamos utilizar, get, patch, delete, sao definidos na pasta de routes
+
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 
@@ -24,7 +26,7 @@ module.exports = (app, nextMain) => {
       return next(400);
     }
 
-    // TODO: autenticar a la usuarix
+    // TODO: autenticar a la usuaria
     next();
   });
 
