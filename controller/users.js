@@ -3,18 +3,31 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-//const passwordHash = bcrypt.hash(password, salt);
 
 const createUser = async (req, res) => {
+  console.log("chegou no createUser");
   try {
     const { id, email, password, role } = req.body;
+
+    if (!id || !email || !password || !role) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    if (id || email) {
+      return res.status(422).json({ msg: "id or email already registered" });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
     const newUser = new User({
       id,
       email,
-      password,
+      password: passwordHash,
       role,
     });
     await newUser.save();
+
+    newUser.password = undefined;
+
     res.status(201).json({ newUser });
   } catch (error) {
     console.error(error);

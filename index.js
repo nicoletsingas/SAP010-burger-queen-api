@@ -2,11 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const routes = require("./routes");
 const pkg = require("./package.json");
 const config = require("./config");
 const authMiddleware = require("./middleware/auth");
-const errorHandler = require("./middleware/error");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 
@@ -17,8 +15,7 @@ app.set("pkg", pkg);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(authMiddleware(secret));
-
+//app.use(authMiddleware(secret));
 
 mongoose
   .connect(dbUrl)
@@ -29,10 +26,9 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-  });
+});
 
 app.use("/auth", authRoutes);
-
 app.use("/users", userRoutes);
 
 module.exports = app;

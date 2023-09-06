@@ -3,10 +3,9 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const secret = require("../config");
+const { secret } = require("../config");
 
 const login = async (req, res) => {
-  console.log("chamou");
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -20,10 +19,6 @@ const login = async (req, res) => {
       return res.status(404).json({ msg: "Not found" });
     }
 
-    if (user) {
-      return res.status(422).json({ msg: "This email already exists" });
-    }
-
     const checkPassword = await bcrypt.compare(password, user.password);
 
     if (!checkPassword) {
@@ -35,6 +30,7 @@ const login = async (req, res) => {
     });
 
     res.status(200).json({ token });
+    
   } catch (error) {
     res.status(500).json({ msg: "Internal server error" });
   }
