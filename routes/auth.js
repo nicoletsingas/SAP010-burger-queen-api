@@ -5,7 +5,7 @@ const config = require('../config');
 
 const { secret } = config;
 
-/** @module auth */
+/* @module auth */
 module.exports = (app, nextMain) => {
   /**
    * @name /auth
@@ -20,6 +20,7 @@ module.exports = (app, nextMain) => {
    * @auth No requiere autenticación
    */
   app.post('/auth', (req, resp, next) => {
+    console.log('rota auth')
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -30,5 +31,5 @@ module.exports = (app, nextMain) => {
     next();
   });
 
-  return nextMain();
-};
+  return nextMain(); 
+}; 

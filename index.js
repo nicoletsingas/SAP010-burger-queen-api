@@ -5,8 +5,6 @@ const app = express();
 const routes = require("./routes");
 const pkg = require("./package.json");
 const config = require("./config");
-const adminEmail = require("./config");
-const adminPassword = require("./config");
 const authMiddleware = require("./middleware/auth");
 const errorHandler = require("./middleware/error");
 
@@ -25,21 +23,23 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-.connect(dbUrl)
-.then(() => {
-  app.listen(port, () => {
-    console.log("conectou ao banco");
-  });
-})
-.catch((err) => {
-  console.log(err);
+  .connect(dbUrl)
+  .then(() => {
+    app.listen(port, () => {
+      console.log("conectou ao banco");
+    });
+  })
+  .catch((err) => {
+    console.log(err);
 });
 
-routes(app, (err) => {
+/*routes(app, (err) => {
   if (err) {
     throw err;
   }
   app.use(errorHandler);
+}); */
 
-});
+app.use('/api', routes );
 
+module.exports = app;
