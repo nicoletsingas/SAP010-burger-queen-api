@@ -2,11 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const routes = require("./routes");
 const pkg = require("./package.json");
 const config = require("./config");
 const authMiddleware = require("./middleware/auth");
-const errorHandler = require("./middleware/error");
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users");
 
 const { port, dbUrl, secret } = config;
 
@@ -15,23 +15,23 @@ app.set("pkg", pkg);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(authMiddleware(secret));
-
-// Teste - Open route - public route
-app.get("/", (req, res) => {
-  res.status(200).json({ msg: "Bem-vinda a minha API!" });
-});
+//app.use(authMiddleware(secret));
 
 mongoose
   .connect(dbUrl)
   .then(() => {
     app.listen(port, () => {
-      console.log("conectou ao banco");
+      console.info(`Server is running on port ${port}`);
     });
   })
   .catch((err) => {
     console.log(err);
 });
+
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+
+module.exports = app;
 
 /*routes(app, (err) => {
   if (err) {
@@ -39,7 +39,3 @@ mongoose
   }
   app.use(errorHandler);
 }); */
-
-app.use('/api', routes );
-
-module.exports = app;

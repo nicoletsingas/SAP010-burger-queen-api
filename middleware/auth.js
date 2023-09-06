@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+/*const jwt = require('jsonwebtoken');
 
 module.exports = (secret) => (req, resp, next) => {
   const { authorization } = req.headers;
@@ -45,4 +45,4 @@ module.exports.requireAdmin = (req, resp, next) => (
     : (!module.exports.isAdmin(req))
       ? next(403)
       : next()
-);
+); */
