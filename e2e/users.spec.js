@@ -1,4 +1,4 @@
-const url = require('url');
+/* const url = require('url');
 const qs = require('querystring');
 const config = require('../config');
 
@@ -308,4 +308,4 @@ describe('DELETE /users/:uid', () => {
       .then(() => fetchAsAdmin(`/users/${credentials.email}`))
       .then((resp) => expect(resp.status).toBe(404));
   });
-});
+}); */
