@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const pkg = require("./package.json");
 const config = require("./config");
-const authMiddleware = require("./middleware/auth");
+//const authMiddleware = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 
@@ -25,7 +25,7 @@ mongoose
     });
   })
   .catch((err) => {
-    console.log(err);
+    console.error(err);
 });
 
 app.use("/auth", authRoutes);

@@ -1,5 +1,3 @@
-//Lógica de autenticação, como login e geração de tokens JWT.
-
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
