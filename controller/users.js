@@ -1,17 +1,14 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
 
 const createUser = async (req, res) => {
   try {
     const { id, email, password, role } = req.body;
 
+    console.log("chegou no createUser")
+
     if (!id || !email || !password || !role) {
       return res.status(400).json({ error: "All fields are required" });
-    }
-
-    if (id || email) {
-      return res.status(422).json({ msg: "id or email already registered" });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
@@ -66,7 +63,7 @@ const getUsers = async (req, res) => {
 const getUsersById = async (req, res) => {
   try {
     const userId = req.params.id;
-    const findUser = await User.findById(userId);
+    const findUser = await User.findById(userId).select('-password');
 
     if (!findUser) {
       return res.status(404).json({ error: "User not found" });
