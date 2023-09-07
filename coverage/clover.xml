@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1694122854557" clover="3.2.0">
+  <project timestamp="1694122854557" name="All files">
+    <metrics statements="28" coveredstatements="28" conditionals="19" coveredconditionals="19" methods="1" coveredmethods="1" elements="48" coveredelements="48" complexity="0" loc="28" ncloc="28" packages="3" files="3" classes="3"/>
+    <package name="SAP010-burger-queen-api">
+      <metrics statements="6" coveredstatements="6" conditionals="11" coveredconditionals="11" methods="0" coveredmethods="0"/>
+      <file name="config.js" path="C:\Vale do silicio\Documents\Estudos\Laboratoria\SAP010-burger-queen-api\config.js">
+        <metrics statements="6" coveredstatements="6" conditionals="11" coveredconditionals="11" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="cond" truecount="3" falsecount="0"/>
+        <line num="2" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="SAP010-burger-queen-api.controller">
+      <metrics statements="19" coveredstatements="19" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <file name="auth.js" path="C:\Vale do silicio\Documents\Estudos\Laboratoria\SAP010-burger-queen-api\controller\auth.js">
+        <metrics statements="19" coveredstatements="19" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="12" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="SAP010-burger-queen-api.models">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="User.js" path="C:\Vale do silicio\Documents\Estudos\Laboratoria\SAP010-burger-queen-api\models\User.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
