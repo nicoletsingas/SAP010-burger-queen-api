@@ -1,8 +1,6 @@
 const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
 const auth = require('../auth');
 const User = require('../../models/User');
-// const { secret } = require('../config');
 
 const mockResponse = () => {
   const res = {};
