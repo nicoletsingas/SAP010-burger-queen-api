@@ -27,7 +27,6 @@ const createUser = async (req, res) => {
 
     res.status(201).json({ newUser });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -48,7 +47,6 @@ const updateUser = async (req, res) => {
 
     res.json({ updateUser });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -58,7 +56,6 @@ const getUsers = async (req, res) => {
     const users = await User.find();
     res.json(users);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
