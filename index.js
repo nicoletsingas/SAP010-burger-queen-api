@@ -9,6 +9,7 @@ const config = require('./config');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const productsRoutes = require('./routes/products');
+const ordersRoutes = require('./routes/orders');
 
 const { port, dbUrl } = config;
 
@@ -32,5 +33,6 @@ mongoose
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/products', productsRoutes);
+app.use('/orders', ordersRoutes);
 
 module.exports = app;
