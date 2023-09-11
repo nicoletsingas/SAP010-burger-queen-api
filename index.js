@@ -8,6 +8,7 @@ const pkg = require('./package.json');
 const config = require('./config');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
+const productsRoutes = require('./routes/products');
 
 const { port, dbUrl } = config;
 
@@ -30,12 +31,6 @@ mongoose
 
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
+app.use('/products', productsRoutes);
 
 module.exports = app;
-
-/* routes(app, (err) => {
-  if (err) {
-    throw err;
-  }
-  app.use(errorHandler);
-}); */
