@@ -44,13 +44,13 @@ const updateProduct = async (req, res) => {
     const updatedProduct = await Products.findByIdAndUpdate(
       productId,
       {
-      name,
-      price,
-      image,
-      type,
-      details,
-    },
-    { new: true },
+        name,
+        price,
+        image,
+        type,
+        details,
+      },
+      { new: true },
     );
 
     if (!updatedProduct) {
@@ -77,7 +77,7 @@ const getProductsById = async (req, res) => {
 
     const product = await Products.findById(productId);
 
-    if(!product) {
+    if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }
 
@@ -93,7 +93,7 @@ const deleteProduct = async (req, res) => {
 
     const deletedProduct = await Products.findByIdAndDelete(productId);
 
-    if(!deletedProduct) {
+    if (!deletedProduct) {
       return res.status(404).json({ error: 'Product not found' });
     }
 

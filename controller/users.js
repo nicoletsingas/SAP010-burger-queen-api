@@ -35,17 +35,17 @@ const updateUser = async (req, res) => {
   try {
     const userId = req.params.id;
     const { email, password, role } = req.body;
-    const updateUser = await User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       userId,
       { email, password, role },
       { new: true },
     );
 
-    if (!updateUser) {
+    if (!updatedUser) {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    res.json({ updateUser });
+    res.json({ updatedUser });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -71,7 +71,6 @@ const getUsersById = async (req, res) => {
 
     res.status(200).json({ findUser });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
@@ -87,7 +86,6 @@ const deleteUser = async (req, res) => {
 
     res.status(200).json({ msg: 'Success deleted user' });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
