@@ -18,7 +18,7 @@ const createOrder = async (req, res) => {
 
     const newOrder = await order.save();
 
-    res.status(201).json({newOrder});
+    res.status(201).json({ newOrder });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
@@ -43,7 +43,7 @@ const updateOrder = async (req, res) => {
         status,
         products,
       },
-      { new: true }
+      { new: true },
     );
 
     if (!updateOrder) {
@@ -71,7 +71,7 @@ const getOrdersById = async (req, res) => {
 
     const order = await Orders.findById(orderId);
 
-    if(!order) {
+    if (!order) {
       return res.status(404).json({ error: 'order not found' });
     }
 
@@ -87,7 +87,7 @@ const deleteOrder = async (req, res) => {
 
     const deletedOrder = await Orders.findByIdAndDelete(orderId);
 
-    if(!deleteOrder) {
+    if (!deletedOrder) {
       return res.status(404).json({ error: 'order not found' });
     }
 

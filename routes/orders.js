@@ -1,14 +1,14 @@
 const express = require('express');
 
 const router = express.Router();
-const { requiredAuth, isAdmin } = require('../middleware/auth');
+const { requiredAuth } = require('../middleware/auth');
 
 const {
-    createOrder,
-    updateOrder,
-    getOrders,
-    getOrdersById,
-    deleteOrder,
+  createOrder,
+  updateOrder,
+  getOrders,
+  getOrdersById,
+  deleteOrder,
 } = require('../controller/order');
 
 router.post('/orders', requiredAuth, createOrder);

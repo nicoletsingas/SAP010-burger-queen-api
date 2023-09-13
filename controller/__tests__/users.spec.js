@@ -82,7 +82,7 @@ describe('updateUser', () => {
       { email: 'admin@example.com', password: 'password', role: 'admin' },
       { new: true },
     );
-    expect(res.json).toHaveBeenCalledWith({ updateUser: { email: 'updated@example.com', role: 'waiter' } });
+    expect(res.json).toHaveBeenCalledWith({ updatedUser: { email: 'updated@example.com', role: 'waiter' } });
   });
 
   it('should handle error 404 if user not found', async () => {
@@ -105,7 +105,7 @@ describe('updateUser', () => {
     expect(res.json).toHaveBeenCalledWith({ error: 'User not found' });
   });
 
-  it('should handle error - updateUser', async () => {
+  it('should handle error if cant update user', async () => {
     const req = {
       params: { id: '1' },
       body: {
@@ -136,7 +136,7 @@ describe('getUsers', () => {
     expect(res.json).toHaveBeenCalledWith(users);
   });
 
-  it('should handle error - getUsers', async () => {
+  it('should handle error if cant get users', async () => {
     const req = {};
     User.find = jest.fn().mockRejectedValue(new Error('Query error'));
     await getUsers(req, res);
@@ -165,7 +165,7 @@ describe('getUsers', () => {
 }); */
 
 describe('deleteUser', () => {
-  it('should delete a user', async () => {
+  it('should delete user', async () => {
     const fakeUser = {
       id: '1',
     };
@@ -194,7 +194,7 @@ describe('deleteUser', () => {
     expect(res.json).toHaveBeenCalledWith({ error: 'User not found' });
   });
 
-  it('should handle error - deleteUser', async () => {
+  it('should handle error if cant deleteUser', async () => {
     const req = {
       params: {
         id: 'user_id',
