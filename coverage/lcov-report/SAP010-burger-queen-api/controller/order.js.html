@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for SAP010-burger-queen-api/controller/products.js</title>
+    <title>Code coverage report for SAP010-burger-queen-api/controller/order.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">SAP010-burger-queen-api/controller</a> products.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">SAP010-burger-queen-api/controller</a> order.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>41/41</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>41/41</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
@@ -169,27 +169,16 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,8 +187,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -215,11 +204,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,6 +219,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,117 +275,111 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Products = require('../models/Products');
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Orders = require('../models/Orders');
 &nbsp;
-const createProduct = async (req, res) =&gt; {
+const createOrder = async (req, res) =&gt; {
   try {
     const {
-      name,
-      price,
-      image,
-      type,
-      details,
+      client,
+      userName,
+      status,
+      products,
     } = req.body;
 &nbsp;
-    if (!name || !price || !type) {
-      return res.status(400).json({ error: 'Fields name, price and type are required' });
-    }
-&nbsp;
-    const product = new Products({
-      name,
-      price,
-      image,
-      type,
-      details,
+    const order = new Orders({
+      client,
+      userName,
+      status,
+      products,
     });
 &nbsp;
-    const newProduct = await product.save();
-    res.status(201).json({ newProduct });
+    const newOrder = await order.save();
+&nbsp;
+    res.status(201).json({ newOrder });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
-const updateProduct = async (req, res) =&gt; {
+const updateOrder = async (req, res) =&gt; {
   try {
-    const productId = req.params.id;
+    const orderId = req.params.id;
 &nbsp;
     const {
-      name,
-      price,
-      image,
-      type,
-      details,
+      client,
+      userName,
+      status,
+      products,
     } = req.body;
 &nbsp;
-    const updatedProduct = await Products.findByIdAndUpdate(
-      productId,
+    const updateOrder = await Orders.findByIdAndUpdate(
+      orderId,
       {
-        name,
-        price,
-        image,
-        type,
-        details,
+        client,
+        userName,
+        status,
+        products,
       },
       { new: true },
     );
 &nbsp;
-    if (!updatedProduct) {
-      return res.status(404).json({ error: 'Product not found' });
+    if (!updateOrder) {
+      return res.status(404).json({ error: 'Order not found' });
     }
-    res.status(201).json({ updateProduct });
+&nbsp;
+    res.status(201).json({ updateOrder });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
-const getProducts = async (req, res) =&gt; {
+const getOrders = async (req, res) =&gt; {
   try {
-    const products = await Products.find();
-    res.json({ products });
+    const orders = await Orders.find();
+    res.json({ orders });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
-const getProductsById = async (req, res) =&gt; {
+const getOrdersById = async (req, res) =&gt; {
   try {
-    const productId = req.params.id;
+    const orderId = req.params.id;
 &nbsp;
-    const product = await Products.findById(productId);
+    const order = await Orders.findById(orderId);
 &nbsp;
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+    if (!order) {
+      return res.status(404).json({ error: 'Order not found' });
     }
 &nbsp;
-    res.json({ product });
+    res.json({ order });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
-const deleteProduct = async (req, res) =&gt; {
+const deleteOrder = async (req, res) =&gt; {
   try {
-    const productId = req.params.id;
+    const orderId = req.params.id;
 &nbsp;
-    const deletedProduct = await Products.findByIdAndDelete(productId);
+    const deletedOrder = await Orders.findByIdAndDelete(orderId);
 &nbsp;
-    if (!deletedProduct) {
-      return res.status(404).json({ error: 'Product not found' });
+    if (!deletedOrder) {
+      return res.status(404).json({ error: 'Order not found' });
     }
 &nbsp;
-    res.status(200).json({ msg: 'Success deleted product' });
+    res.json({ msg: 'Success deleted order' });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
 module.exports = {
-  createProduct,
-  updateProduct,
-  getProducts,
-  getProductsById,
-  deleteProduct,
+  createOrder,
+  updateOrder,
+  getOrders,
+  getOrdersById,
+  deleteOrder,
 };
 &nbsp;</pre></td></tr></table></pre>
 

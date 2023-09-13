@@ -72,7 +72,7 @@ const getOrdersById = async (req, res) => {
     const order = await Orders.findById(orderId);
 
     if (!order) {
-      return res.status(404).json({ error: 'order not found' });
+      return res.status(404).json({ error: 'Order not found' });
     }
 
     res.json({ order });
@@ -88,10 +88,10 @@ const deleteOrder = async (req, res) => {
     const deletedOrder = await Orders.findByIdAndDelete(orderId);
 
     if (!deletedOrder) {
-      return res.status(404).json({ error: 'order not found' });
+      return res.status(404).json({ error: 'Order not found' });
     }
 
-    res.json({ msg: 'Success deleted order ' });
+    res.json({ msg: 'Success deleted order' });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
