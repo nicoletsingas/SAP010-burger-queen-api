@@ -1,4 +1,4 @@
-/* const kill = require('tree-kill');
+const kill = require('tree-kill');
 
 module.exports = () => new Promise((resolve) => {
   if (!global.__e2e.childProcessPid) {
@@ -8,4 +8,4 @@ module.exports = () => new Promise((resolve) => {
 
   kill(global.__e2e.childProcessPid, 'SIGKILL', resolve);
   global.__e2e.childProcessPid = null;
-}); */
+});

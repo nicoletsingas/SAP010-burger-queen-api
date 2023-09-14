@@ -1,3 +1,3 @@
-/* module.exports = {
+module.exports = {
   preset: '@shelf/jest-mongodb',
-}; */
+};

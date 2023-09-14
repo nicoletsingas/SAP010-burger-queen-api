@@ -1,4 +1,4 @@
-/* const config = require('../config');
+const config = require('../config');
 
 const { fetch, fetchWithAuth } = process;
 
@@ -48,4 +48,4 @@ describe('POST /auth', () => {
       })
       .then((json) => expect(json.email).toBe(config.adminEmail))
   ));
-}); */
+});

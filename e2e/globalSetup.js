@@ -1,5 +1,4 @@
-/* const path = require('path');
-
+const path = require('path');
 const { spawn } = require('child_process');
 const kill = require('tree-kill');
 
@@ -28,7 +27,7 @@ const __e2e = {
   // testObjects: [],
 };
 
-  const fetch = (url, opts = {}) => import('node-fetch')
+const fetch = (url, opts = {}) => import('node-fetch')
   .then(({ default: fetch }) => fetch(`${baseUrl}${url}`, {
     ...opts,
     headers: {
@@ -41,6 +40,7 @@ const __e2e = {
         : {}
     ),
   }));
+
 const fetchWithAuth = (token) => (url, opts = {}) => fetch(url, {
   ...opts,
   headers: {
@@ -150,4 +150,4 @@ process.baseUrl = baseUrl;
 process.fetch = fetch;
 process.fetchWithAuth = fetchWithAuth;
 process.fetchAsAdmin = fetchAsAdmin;
-process.fetchAsTestUser = fetchAsTestUser; */
+process.fetchAsTestUser = fetchAsTestUser;
