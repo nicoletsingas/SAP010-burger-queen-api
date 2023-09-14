@@ -1,4 +1,4 @@
-/* const {
+const {
   fetch,
   fetchAsTestUser,
   fetchAsAdmin,
@@ -40,8 +40,10 @@ describe('POST /orders', () => {
       })
       .then(([product, user]) => fetchAsTestUser('/orders', {
         method: 'POST',
-        body: { products: [{ productId: product._id, qty: 5, client: 'client' }],
-        userId: user._id },
+        body: {
+          products: [{ productId: product._id, qty: 5, client: 'client' }],
+          userId: user._id,
+        },
       }))
       .then((resp) => {
         expect(resp.status).toBe(200);
@@ -487,4 +489,4 @@ describe('DELETE /orders/:orderId', () => {
       })
       .then((resp) => expect(resp.status).toBe(404))
   ));
-}); */
+});

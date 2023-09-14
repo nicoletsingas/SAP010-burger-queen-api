@@ -11,7 +11,7 @@
     "start": "nodemon index.js",
     "test:e2e": "jest --verbose --testPathPattern e2e --globalSetup ./e2e/globalSetup --globalTeardown ./e2e/globalTeardown --runInBand",
     "test:unit": "jest --verbose --testPathIgnorePatterns e2e",
-    "test": "jest --coverage",
+    "test": "npm run test:e2e && npm run test:unit",
     "lint": "eslint .",
     "docs:generate": "jsdoc -c jsdoc.conf --readme README-docs.md",
     "docs:deploy": "rm -rf docs && npm run docs:generate && gh-pages -d docs"
@@ -30,6 +30,7 @@
     "eslint": "^8.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.22.1",
+    "esm": "^3.2.25",
     "gh-pages": "^3.1.0",
     "jest": "^27.5.1",
     "jsdoc": "^3.6.6",
