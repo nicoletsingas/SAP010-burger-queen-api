@@ -4,7 +4,7 @@ const {
   createUser,
   updateUser,
   getUsers,
-  // getUsersById,
+  getUsersById,
   deleteUser,
 } = require('../users');
 
@@ -16,7 +16,6 @@ beforeEach(() => {
 
 const req = {
   body: {
-    id: '1',
     email: 'test@example.com',
     password: 'password',
     role: 'admin',
@@ -36,7 +35,6 @@ describe('createUser', () => {
     expect(res.status).toHaveBeenCalledWith(201);
     expect(bcrypt.hash).toHaveBeenCalledWith('password', 10);
     expect(User).toHaveBeenCalledWith({
-      id: '1',
       email: 'test@example.com',
       password: 'hashedPassword',
       role: 'admin',
@@ -46,7 +44,6 @@ describe('createUser', () => {
   it('should return a 400 error if any required field is empty', async () => {
     const req = {
       body: {
-        id: '',
         email: '',
         password: '',
         role: '',
@@ -146,23 +143,45 @@ describe('getUsers', () => {
   });
 });
 
-/* describe('getUsersById', () => {
-  it('should return user by id', async () => {
-    const fakeUser = {
-      id: '1',
+describe('getUsersById', () => {
+  it('should return user by id without password', async () => {
+    const userMock = {
+      _id: '64f8fd2251d9e3262df3cb2a',
+      email: 'waiter@example.com',
+      role: 'waiter',
+      password: 'password',
     };
     const req = {
-      params: {
-        id: '1',
-      },
+      params: { id: '64f8fd2251d9e3262df3cb2a' },
     };
-    User.findById = jest.fn().mockRejectedValue(fakeUser);
+    User.findById = jest.fn().mockResolvedValue(userMock);
     await getUsersById(req, res);
-    expect(User.findById).toHaveBeenCalledWith('1');
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith({ findUser: fakeUser });
+    expect(User.findById).toHaveBeenCalledWith('64f8fd2251d9e3262df3cb2a');
+    expect(res.json).toHaveBeenCalledWith(expect.not.objectContaining(
+      {
+        password: expect.any(String),
+      },
+    ));
   });
-}); */
+
+  it('should return 404 when user is not found', async () => {
+    const req = {
+      params: { id: 'invalidId' },
+    };
+    User.findById = jest.fn().mockResolvedValue(null);
+    await getUsersById(req, res);
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ error: 'User not found' });
+  });
+
+  it('should handle error if cant get users by ID', async () => {
+    const req = {};
+    User.findById = jest.fn().mockRejectedValue(new Error('Query error'));
+    await getUsersById(req, res);
+    expect(res.status).toHaveBeenCalledWith(500);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Internal Server Error' });
+  });
+});
 
 describe('deleteUser', () => {
   it('should delete user', async () => {
