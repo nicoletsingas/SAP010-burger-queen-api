@@ -19,6 +19,10 @@ app.set('pkg', pkg);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).json({ msg: 'Bem-vinda a minha API!' });
+});
+
 mongoose
   .connect(dbUrl)
   .then(() => {
@@ -30,9 +34,9 @@ mongoose
     console.error(err);
   });
 
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
-app.use('/products', productsRoutes);
-app.use('/orders', ordersRoutes);
+app.use(authRoutes);
+app.use(userRoutes);
+app.use(productsRoutes);
+app.use(ordersRoutes);
 
 module.exports = app;

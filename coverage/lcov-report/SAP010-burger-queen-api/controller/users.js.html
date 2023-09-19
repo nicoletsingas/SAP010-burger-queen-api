@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.09% </span>
+                <span class="strong">93.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/44</span>
+                <span class='fraction'>41/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/12</span>
+                <span class='fraction'>9/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.09% </span>
+                <span class="strong">93.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/44</span>
+                <span class='fraction'>41/44</span>
             </div>
         
             
@@ -160,14 +160,11 @@
 <a name='L95'></a><a href='#L95'>95</a>
 <a name='L96'></a><a href='#L96'>96</a>
 <a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L98'></a><a href='#L98'>98</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,7 +177,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -225,9 +221,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -235,7 +231,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,19 +263,17 @@ const User = require('../models/User');
 const createUser = async (req, res) =&gt; {
   try {
     const {
-      id,
       email,
       password,
       role,
     } = req.body;
 &nbsp;
-    if (!id || !email || !password || !role) {
+    if (!email || !password || !role) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 &nbsp;
     const passwordHash = await bcrypt.hash(password, 10);
     const newUser = new User({
-      id,
       email,
       password: passwordHash,
       role,
@@ -323,10 +317,10 @@ const getUsers = async (req, res) =&gt; {
   }
 };
 &nbsp;
-const getUsersById = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  try {</span>
-    const userId = <span class="cstat-no" title="statement not covered" >req.params.id;</span>
-    const findUser = <span class="cstat-no" title="statement not covered" >await User.findById(userId).select('-password');</span>
+const getUsersById = async (req, res) =&gt; {
+  try {
+    const userId = req.params.id;
+    const findUser = await User.findById(userId).select('-password');
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!findUser) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(404).json({ error: 'User not found' });</span>
@@ -334,7 +328,7 @@ const getUsersById = <span class="fstat-no" title="function not covered" >as</sp
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(200).json({ findUser });</span>
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: 'Internal Server Error' });</span>
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 &nbsp;
@@ -367,7 +361,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-13T23:51:02.500Z
+                at 2023-09-19T22:34:07.715Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
