@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const pkg = require('./package.json');
@@ -18,6 +19,13 @@ app.set('pkg', pkg);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+app.use(cors({
+  origin: 'https://burguer-cooked.vercel.app/',
+  methods: 'GET,HEAD,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 200,
+}));
 
 app.get('/', (req, res) => {
   res.status(200).json({ msg: 'Bem-vinda a minha API!' });
