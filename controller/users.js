@@ -14,18 +14,20 @@ const createUser = async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       email,
       password: passwordHash,
       role,
     });
+
     await newUser.save();
 
     newUser.password = undefined;
 
-    res.status(201).json({ newUser });
+    res.status(200).json({ newUser });
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Error', erro: error });
   }
 };
 
