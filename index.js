@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://burguer-cooked.vercel.app/',
+  origin: 'https://burguer-cooked.vercel.app',
   methods: 'GET,HEAD,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 200,
