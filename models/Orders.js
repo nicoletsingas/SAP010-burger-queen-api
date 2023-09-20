@@ -15,6 +15,9 @@ const ordersSchema = new mongoose.Schema(
     },
     products: [
       {
+        id: {
+          type: String,
+        },
         name: {
           type: String,
         },
